@@ -1,0 +1,26 @@
+let cnt_now, 1
+let cnt_fizz, 0
+let cnt_buzz, 0
+@loop
+    cmp cnt_fizz, "<", 2, b_not_fizz
+    cmp cnt_buzz, "<", 4, b_not_buzz
+    let s_mes, ""
+    when b_not_fizz, @not_fizz
+        cat s_mes, "Fizz ", s_mes
+        let cnt_fizz, -1
+    @not_fizz
+    add cnt_fizz, 1, cnt_fizz
+    when b_not_buzz, @not_buzz
+        cat s_mes, "Buzz", s_mes
+        let cnt_buzz, -1
+    @not_buzz
+    add cnt_buzz, 1, cnt_buzz
+    bool b_show_mes, s_mes
+    when b_show_mes, @show_mes
+        str s_mes, cnt_now
+    @show_mes
+    print s_mes
+
+    add cnt_now, 1, cnt_now
+    cmp cnt_now, "<=", 10000, b_continue
+    when b_continue, @loop
